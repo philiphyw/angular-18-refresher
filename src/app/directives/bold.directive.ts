@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appBold]',
@@ -6,6 +6,15 @@ import { Directive } from '@angular/core';
 })
 export class BoldDirective {
 
-  constructor() { }
+  constructor(private elementRef:ElementRef) {
+  }
+  
+  @HostListener('mouseenter') onMouseEnter() {
+    this.elementRef.nativeElement.style.fontWeight = 'bold';
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.elementRef.nativeElement.style.fontWeight = 'inherit';
+  }
 
 }
