@@ -1,4 +1,4 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, computed, effect, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-signal-counter',
@@ -12,11 +12,16 @@ export class SignalCounterComponent {
   doubleCounter = computed(() => this.counter() * 2);
   printCounter = effect(() =>{console.log(`effect print current counter: ${this.counter()} at ${new Date().toLocaleString()}`)});
 
+  counterPrefix = input<String>('');
   onIncrement() {
     this.counter.update((prev) => prev + 1);
   }
 
   onDecrement() {
     if (this.counter() > 0) this.counter.update((prev) => prev - 1);
+  }
+
+  getCounterPrefix(){
+    return (this.counterPrefix()?` ${this.counterPrefix()} `:' ')
   }
 }
