@@ -12,4 +12,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomeComponent {
   counterPrefix = '';
+
+  onGetCurrentCount(count: number) {
+    console.log(`HomeComponent get current count from SignalComponent: ${count}`);
+  }
 }
