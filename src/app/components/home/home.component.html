@@ -1,3 +1,8 @@
 <p appHighlight underlineColor="darkgreen">home works!</p>
 <label>Enter Counter Prefix:</label><input type="text" [(ngModel)]="counterPrefix" placeholder="Enter Counter Prefix" />
-<app-signal-counter [counterPrefix]="counterPrefix" (getCurrentCount)="onGetCurrentCount($event)"></app-signal-counter>
+<app-signal-counter [counterPrefix]="counterPrefix" (getActions)="onGetCounterActions($event)"></app-signal-counter>
+<ul>
+    <li *ngFor="let action of counterActions()">
+        {{action}}
+    </li>
+</ul>
