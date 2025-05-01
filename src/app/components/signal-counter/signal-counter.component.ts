@@ -12,7 +12,7 @@ export class SignalCounterComponent {
   doubleCounter = computed(() => this.counter() * 2);
   printCounter = effect(() =>{console.log(`effect print current counter: ${this.counter()} at ${new Date().toLocaleString()}`)});
 
-  counterPrefix = input<String>('');
+  counterPrefix = input.required<String>();
   onIncrement() {
     this.counter.update((prev) => prev + 1);
   }
@@ -21,7 +21,5 @@ export class SignalCounterComponent {
     if (this.counter() > 0) this.counter.update((prev) => prev - 1);
   }
 
-  getCounterPrefix(){
-    return (this.counterPrefix()?` ${this.counterPrefix()} `:' ')
-  }
+
 }
