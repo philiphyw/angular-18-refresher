@@ -1,5 +1,4 @@
 import { Component, computed, effect, input, output, signal } from '@angular/core';
-import { single } from 'rxjs';
 
 @Component({
   selector: 'app-signal-counter',
