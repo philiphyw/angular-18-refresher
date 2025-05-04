@@ -1,5 +1,7 @@
 <p appHighlight underlineColor="darkgreen">home works!</p>
-<label>Enter Counter Prefix:</label><input type="text" [(ngModel)]="counterPrefix" placeholder="Enter Counter Prefix" />
+@defer (on timer(1000ms)) {
+    <label>Enter Counter Prefix:</label><input type="text" [(ngModel)]="counterPrefix" placeholder="Enter Counter Prefix" />
+}
 <app-signal-counter [counterPrefix]="counterPrefix" (getActions)="onGetCounterActions($event)"></app-signal-counter>
 <button #startLoadingButton (click)="onStartLoading()">Start Loading</button>
 @defer(on interaction(startLoadingButton)){
