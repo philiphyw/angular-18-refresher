@@ -1,12 +1,11 @@
 <p appHighlight underlineColor="darkgreen">home works!</p>
 <label>Enter Counter Prefix:</label><input type="text" [(ngModel)]="counterPrefix" placeholder="Enter Counter Prefix" />
 <app-signal-counter [counterPrefix]="counterPrefix" (getActions)="onGetCounterActions($event)"></app-signal-counter>
-<button (click)="onStartLoading()">Start Loading</button>
-<ul *ngIf = "!loadingService.isLoading() else showLoadingIndicator ">
-    <li *ngFor="let action of counterActions()">
-        {{action}}
-    </li>
-</ul>
-<ng-template #showLoadingIndicator>
-    <h1><i>Loading...</i></h1>
-</ng-template>
+<button #startLoadingButton (click)="onStartLoading()">Start Loading</button>
+@defer(on interaction(startLoadingButton)){
+    <ul>
+        <li *ngFor="let action of counterActions()">
+            {{action}}
+        </li>
+    </ul>
+}
