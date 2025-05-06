@@ -1,19 +1,22 @@
-<p appHighlight underlineColor="darkgreen">home works!</p>
+<p  data-test="place-holder" appHighlight underlineColor="darkgreen">home works!</p>
 @defer (on timer(1000ms)) {
-    <label>Enter Counter Prefix:</label><input type="text" [(ngModel)]="counterPrefix" placeholder="Enter Counter Prefix" />
+    <label data-test="counter-prefix">Enter Counter Prefix:</label><input type="text" [(ngModel)]="counterPrefix" placeholder="Enter Counter Prefix" />
 }
-<app-signal-counter [counterPrefix]="counterPrefix" (getActions)="onGetCounterActions($event)"></app-signal-counter>
-<button #startLoadingButton (click)="onStartLoading()">Start Loading</button>
+<app-signal-counter #appSignalCounter [counterPrefix]="counterPrefix" (getActions)="onGetCounterActions($event)"></app-signal-counter>
+@defer(on hover(appSignalCounter)){
+    <p data-test="counter-button-tip">Click 'increment' or 'decrement' button to add counter action log to the list</p>
+}
+<button data-test="start-loading" #startLoadingButton (click)="onStartLoading()">Start Loading</button>
 @defer(on interaction(startLoadingButton)){
-    <ul>
+    <ul data-test="counter-action-list">
         <li *ngFor="let action of counterActions()">
             {{action}}
         </li>
     </ul>
 }@loading(minimum 2s) {
-    <p><b><i>Loading...</i></b></p>
+    <p data-test="counter-action-list-loading"><b><i>Loading...</i></b></p>
 }@placeholder {
-    <p>Click the "Start Loading" button to load counter action list</p>
+    <p data-test="counter-action-list-placeholder">Click the "Start Loading" button to load counter action list</p>
 }@error {
     <p>Failed to load counter action list</p>
 }

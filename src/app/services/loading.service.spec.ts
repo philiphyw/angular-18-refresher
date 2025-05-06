@@ -10,7 +10,7 @@ TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting())
 
-fdescribe('LoadingService', () => {
+describe('LoadingService', () => {
   let service: LoadingService;
 
   beforeEach(() => {
