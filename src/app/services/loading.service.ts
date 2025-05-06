@@ -1,10 +1,23 @@
 import { Injectable, signal } from '@angular/core';
 
-export interface FakeApiResponse {
-  type: string;
+export type FakeApiResponse = UserResponse | MessageResponse | ErrorResponse;
+
+export interface UserResponse {
+  type: 'user';
   id: number;
-  name?: string;
-  text?: string;
+  name: string;
+}
+
+export interface MessageResponse {
+  type: 'message';
+  id: number;
+  text: string;
+}
+
+export interface ErrorResponse {
+  type: 'error';
+  id: number;
+  text: string;
 }
 
 @Injectable({
@@ -31,10 +44,15 @@ export class LoadingService {
     [
       { type: 'user', id: 1, name: 'Rosa' },
       { type: 'user', id: 2, name: 'Max' },
-      { type: 'message', id: 3, name: 'This is a great advice, thank you.' },
+      { type: 'message', id: 3, text: 'This is a great advice, thank you.' },
       { type: 'user', id: 4, name: 'Celia' },
-      { type: 'message', id: 5, name: 'Got the fina score of my exam' },
+      { type: 'message', id: 5, text: 'Got the final score of my exam' },
+      { type: 'error', id: 6, text: 'Not sure what is going on' },
     ]
    )
+
+   setTimeout(() => {
+    this.#fakeApiResponse.update(preValue=>[...preValue, { type: 'message', id: 7, text: 'message sent after timeout' }])
+   }, 1000)
   }
 }
