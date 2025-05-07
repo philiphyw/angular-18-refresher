@@ -14,10 +14,9 @@
     }
     }@empty {
     <li>No data in the Api response</li>
-    <button data-test="reload-api-reponse" (click)="loadApiResponse()">Reload Api Response</button>
+    <button data-test="reload-api-reponse" (click)="onLoadApiResponse()">Reload Api Response</button>
     }
-
 </ul>
 }@else{
-<button data-test="load-api-reponse" (click)="loadApiResponse()">Load Api Response</button>
+<button data-test="load-api-reponse" (click)="onLoadApiResponse()">Load Api Response</button>
 }

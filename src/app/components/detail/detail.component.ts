@@ -13,7 +13,7 @@ export class DetailComponent {
   apiResponse = this.loadingService.apiResponse;
   hasFetchApiReponse = signal<boolean>(false);
 
-  loadApiResponse() {
+  onLoadApiResponse() {
     if (!this.hasFetchApiReponse()) this.hasFetchApiReponse.set(true);
     this.loadingService.loadApiResponse();
   }
