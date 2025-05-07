@@ -1,20 +1,23 @@
-@if(apiResponse().length >0){
-    <ul data-test="api-response-list">
-        @for(response of apiResponse(); track response.id){
-            @switch (response.type) {
-                @case ('user') {
-                    <li>User id: {{response.id}}, User name: {{response.name}}</li>
-                }
-                @case ('message') {
-                    <li>Post id: {{response.id}}, Post content: {{response.text}}</li>
-                }
-                @default {
-                    <li>id:{{response.id}}, Unknown type: {{response.type}}</li>
-                }
-            }
-        }
+@if(hasFetchApiReponse()){
+<ul data-test="api-response-list">
+    @for(response of apiResponse(); track response.id){
+    @switch (response.type) {
+    @case ('user') {
+    <li>User id: {{response.id}}, User name: {{response.name}}</li>
+    }
+    @case ('message') {
+    <li>Post id: {{response.id}}, Post content: {{response.text}}</li>
+    }
+    @default {
+    <li>id:{{response.id}}, Unknown type: {{response.type}}</li>
+    }
+    }
+    }@empty {
+    <li>No data in the Api response</li>
+    <button data-test="reload-api-reponse" (click)="loadApiResponse()">Reload Api Response</button>
+    }
 
-    </ul>
+</ul>
 }@else{
-  <button data-test="load-api-reponse" (click)="loadApiResponse()">Load Api Response</button>
+<button data-test="load-api-reponse" (click)="loadApiResponse()">Load Api Response</button>
 }
