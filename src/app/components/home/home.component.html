@@ -8,7 +8,7 @@
 }
 <button data-test="start-loading" #startLoadingButton (click)="onStartLoading()">Start Loading</button>
 @defer(on interaction(startLoadingButton)){
-    <ul data-test="counter-action-list">
+    <ul data-test="counter-action-list" class ='counter-action-list' #counterActionList>
         <li *ngFor="let action of counterActions()">
             {{action}}
         </li>
@@ -20,3 +20,4 @@
 }@error {
     <p>Failed to load counter action list</p>
 }
+<button data-test ="add-host-height" (click)="onAddHostHeight()">Add Host Height</button>

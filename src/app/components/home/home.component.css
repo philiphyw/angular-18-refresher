@@ -1,0 +1,10 @@
+.counter-action-list{
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    min-height: 200px;
+    overflow-x: clip;
+    overflow-y: scroll;
+    background-color: cadetblue;
+
+}
