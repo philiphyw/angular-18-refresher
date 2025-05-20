@@ -1,10 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { LoadingService } from '../../services/loading.service';
+import { ResponseFilterComponent } from "./response-filter/response-filter.component";
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [],
+  imports: [ResponseFilterComponent],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css',
 })
