@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { LoadingService } from '../../services/loading.service';
 import { ResponseFilterComponent } from "./response-filter/response-filter.component";
 
@@ -14,6 +14,15 @@ export class DetailComponent {
   apiResponse = this.loadingService.apiResponse;
   hasFetchApiReponse = signal<boolean>(false);
   responseFilterText = signal<string>('');
+  filteredApiResponse = computed(()=>{
+    const filterText = this.responseFilterText();
+    if (!filterText) return this.apiResponse();
+    return this.apiResponse().filter((item) =>{
+      const itemText = item.type === 'user' ? item.name : item.text;
+      return itemText.toLowerCase().includes(filterText.toLowerCase());
+    }
+    );
+  })
 
   onLoadApiResponse() {
     if (!this.hasFetchApiReponse()) this.hasFetchApiReponse.set(true);

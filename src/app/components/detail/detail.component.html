@@ -2,7 +2,7 @@
 <p>Current Filter Length: {{responseFilterText().length}}</p>
 @if(hasFetchApiReponse()){
 <ul data-test="api-response-list">
-    @for(response of apiResponse(); track response.id){
+    @for(response of filteredApiResponse(); track response.id){
     @switch (response.type) {
     @case ('user') {
     <li>User id: {{response.id}}, User name: {{response.name}}</li>
