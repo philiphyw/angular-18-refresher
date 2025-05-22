@@ -1,4 +1,5 @@
-<app-response-filter></app-response-filter>
+<app-response-filter [(filterText)]="responseFilterText"></app-response-filter>
+<p>Current Filter Length: {{responseFilterText().length}}</p>
 @if(hasFetchApiReponse()){
 <ul data-test="api-response-list">
     @for(response of apiResponse(); track response.id){

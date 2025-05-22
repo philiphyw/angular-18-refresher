@@ -13,6 +13,7 @@ export class DetailComponent {
   loadingService = inject(LoadingService);
   apiResponse = this.loadingService.apiResponse;
   hasFetchApiReponse = signal<boolean>(false);
+  responseFilterText = signal<string>('');
 
   onLoadApiResponse() {
     if (!this.hasFetchApiReponse()) this.hasFetchApiReponse.set(true);
